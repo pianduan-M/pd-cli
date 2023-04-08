@@ -9,6 +9,7 @@ import { program } from "commander";
 import create from "../lib/create.js";
 import update from "../lib/update.js";
 import generate from "../lib/Generator.js";
+import add from "../lib/add.js";
 
 const pkg = resolvePackage();
 const requiredVersion = pkg.engines.node;
@@ -102,6 +103,21 @@ program
   .option("-t, --template <template>", "生成路由页面时使用的模版")
   .action((name, path, options) => {
     generate(name, path, options);
+  });
+
+//  add command
+program
+  .command("add <plugin> [pluginOptions]")
+  .description(
+    "install a plugin and invoke its generator in an already created project"
+  )
+  .option(
+    "--registry <url>",
+    "Use specified npm registry when installing dependencies (only for npm)"
+  )
+  .allowUnknownOption()
+  .action((plugin) => {
+    add(plugin, minimist(process.argv.slice(3)));
   });
 
 program.parse(process.argv);
