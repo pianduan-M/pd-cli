@@ -50,6 +50,7 @@ export const executeCommand = (command, args, cwd) => {
     }
 
     child.on("close", (code) => {
+      console.log(code, "code");
       if (code !== 0) {
         reject(new Error(`command failed: ${command} ${args.join(" ")}`));
         return;

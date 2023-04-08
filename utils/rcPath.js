@@ -53,3 +53,9 @@ export const getTemplateDir = () => {
   const templatePath = getRcPath("pd-template");
   return path.join(templatePath, "vue-template");
 };
+
+export const checkProjectRcFile = (name) => {
+  const filePath = path.join(process.cwd(), name);
+
+  return fs.existsSync(filePath);
+};
