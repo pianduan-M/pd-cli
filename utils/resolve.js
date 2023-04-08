@@ -39,3 +39,11 @@ export const resolveProjectPkg = () => {
 
   return pkg;
 };
+
+export const getCliContext = () => {
+  return path.join(getFileName(import.meta.url), "../");
+};
+
+export const getFileContent = (filePath) => {
+  return fs.readFileSync(path.join(getCliContext(), filePath), "utf-8");
+};

@@ -1,0 +1,13 @@
+build/*.js
+src/assets
+public
+dist
+/node_modules
+unpackage/*
+uni_modules/*
+.husky
+.vscode
+.cz-config.js
+server/request.js
+js_sdk
+*.d.ts

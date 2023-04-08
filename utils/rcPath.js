@@ -55,7 +55,6 @@ export const getTemplateDir = () => {
 };
 
 export const checkProjectRcFile = (name) => {
-  const filePath = path.join(process.cwd(), name);
-
+  const filePath = path.resolve(process.cwd(), name);
   return fs.existsSync(filePath);
 };

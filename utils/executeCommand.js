@@ -1,5 +1,8 @@
 import { execa } from "execa";
 import readline from "readline";
+import { loadOptions } from "../lib/options.js";
+import { logWithSpinner, stopSpinner } from "./spinner.js";
+
 
 function toStartOfLine(stream) {
   if (!chalk.supportsColor) {
@@ -59,3 +62,16 @@ export const executeCommand = (command, args, cwd) => {
     });
   });
 };
+
+
+export async function installPlugins(args) {
+  const packageManager = loadOptions().packageManager || "npm";
+  const context = process.cwd();
+  logWithSpinner("installing plugins ...");
+  await executeCommand(
+    packageManager,
+    [packageManager === "npm" ? "i" : "add", ...args, "--save-dev"],
+    context
+  );
+  stopSpinner();
+}
