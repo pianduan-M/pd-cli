@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import semver from "semver";
 import chalk from "chalk";
 import { resolvePackage } from "../utils/resolve.js";
