@@ -67,11 +67,13 @@ export const executeCommand = (command, args, cwd) => {
 export async function installPlugins(args) {
   const packageManager = loadOptions().packageManager || "npm";
   const context = process.cwd();
-  logWithSpinner("installing plugins ...");
+  // logWithSpinner("installing plugins ...");
   await executeCommand(
     packageManager,
     [packageManager === "npm" ? "i" : "add", ...args, "--save-dev"],
     context
   );
-  stopSpinner();
+  // stopSpinner();
 }
+
+
