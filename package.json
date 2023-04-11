@@ -1,33 +1,67 @@
 {
-  "name": "pdx-cli",
-  "version": "1.0.1",
-  "description": "",
-  "main": "index.js",
-  "type": "module",
-  "bin": {
-    "pd": "./bin/pd.js"
-  },
-  "scripts": {},
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "chalk": "^5.2.0",
-    "commander": "^10.0.0",
-    "download-git-repo": "^3.0.2",
-    "execa": "^7.1.1",
-    "fs-extra": "^11.1.1",
-    "inquirer": "^9.1.5",
-    "lodash-es": "^4.17.21",
-    "lodash.clonedeep": "^4.5.0",
-    "lru-cache": "^8.0.4",
-    "minimist": "^1.2.8",
-    "ora": "^6.3.0",
-    "semver": "^7.3.8",
-    "strip-ansi": "^7.0.1",
-    "validate-npm-package-name": "^5.0.0"
-  },
-  "engines": {
-    "node": "^12.0.0 || >= 14.0.0"
-  }
+	"name": "pdx-cli",
+	"version": "1.0.1",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"bin": {
+		"pd": "./bin/pd.js"
+	},
+	"scripts": {
+		"prepare": "husky install",
+		"commit": "git-cz"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"chalk": "^5.2.0",
+		"commander": "^10.0.0",
+		"download-git-repo": "^3.0.2",
+		"execa": "^7.1.1",
+		"fs-extra": "^11.1.1",
+		"inquirer": "^9.1.5",
+		"lodash-es": "^4.17.21",
+		"lodash.clonedeep": "^4.5.0",
+		"lru-cache": "^8.0.4",
+		"minimist": "^1.2.8",
+		"ora": "^6.3.0",
+		"semver": "^7.3.8",
+		"strip-ansi": "^7.0.1",
+		"validate-npm-package-name": "^5.0.0"
+	},
+	"engines": {
+		"node": "^12.0.0 || >= 14.0.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.21.4",
+		"@babel/eslint-parser": "^7.21.3",
+		"@commitlint/config-conventional": "^17.4.4",
+		"commitizen": "^4.3.0",
+		"commitlint": "^17.5.1",
+		"commitlint-config-cz": "^0.13.3",
+		"cz-customizable": "^7.0.0",
+		"eslint": "^8.38.0",
+		"eslint-config-alloy": "^4.9.0",
+		"husky": "^8.0.3",
+		"lint-staged": "^13.2.1",
+		"prettier": "^2.8.7"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-customizable"
+		},
+		"cz-customizable": {
+			"config": ".cz-config.cjs"
+		}
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx,vue,css,scss}": [
+			"prettier --write .",
+			"eslint  --fix"
+		],
+		"*.md": [
+			"prettier --write"
+		]
+	}
 }
