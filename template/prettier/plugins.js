@@ -7,7 +7,6 @@ export const basePlugins = [
 export const vue2Plugins = [
   "eslint-config-prettier",
   "eslint-plugin-prettier",
-  "prettier"
 ]
 
 export const vue2PrettierEslintConfigExtends = [
