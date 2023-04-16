@@ -101,6 +101,7 @@ program
 	// 生成路由时的配置
 	.option("-r, --routes <routes>", "根据配置生成路由页面")
 	.option("-t, --template <template>", "生成路由页面时使用的模版")
+	.allowUnknownOption()
 	.action((name, path, options) => {
 		generate(name, path, options);
 	});
