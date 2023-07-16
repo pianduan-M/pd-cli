@@ -12,17 +12,14 @@
       </template>
     </page-content>
 
-    <my-dialog
-      :title="dialogTile"
-      :loading="dialogLoading"
-      ref="dialogRef"
-      show-footer-btn
-      @on-save=""
-      @on-close="handleCloseDialog"
-    >
-      <pd-form v-model="formData" :formItems="formItems" ref="formRef">
-      </pd-form>
-    </my-dialog>
+		<my-dialog
+		:title='dialogTitle'
+		:show='dialogVisible'
+		:showFooter='false'
+		@close='handleCloseDialog'
+		>
+			<pd-form v-model='formData' :formItems='formItems' :colLayout='colLayout' ref='formRef'>  </pd-form>
+		</my-dialog>
   </div>
 </template>
 
@@ -46,16 +43,8 @@ const {
   refreshTableData,
   pageContentRef,
 } = usePageContent();
-const { formItems, formData, formRef, validate } = usePageForm();
 
-const {
-  elRef: dialogRef,
-  dialogTile,
-  dialogLoading,
-  handleOpenDialog,
-  handleCloseDialog,
-  changeDialogTitle,
-} = useDialog();
+const { formData, formItems, colLayout, formRef } = usePageForm();
 </script>
 
 <style lang="scss" scoped></style>
